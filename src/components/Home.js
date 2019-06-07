@@ -1,31 +1,28 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 class Home extends Component {
   state = {
-    posts: []
+    
   }
-  componentDidMount(){
-    axios.get('https://jsonplaceholder.typicode.com/posts/')
-      .then(res => {
-        console.log(res);
-        this.setState({
-          posts: res.data.slice(0,10)
-        });
-      })
-  }
+
   render(){
-    const { posts } = this.state
-    const postList = posts.length ? (
-      posts.map(post => {
+     var { products}=this.props.data
+    
+    var length
+    if(products){
+      length=products.length
+    }
+     const postList = length ? (
+      products.map((post,id) => {
         return (
-          <div className="post card" key={post.id}>
+          <div className="post card" key={post.productId}>
             <div className="card-content">
-              <Link to={'/' + post.id}>
-                <span className="card-title red-text">{post.title}</span>
+              <Link to={'/' +id}>
+                <span className="card-title red-text">{post.productName}</span>
               </Link>
-              <p>{post.body}</p>
+              <p className="Container" dangerouslySetInnerHTML={ {__html: post.shortDescription}}></p>
             </div>
           </div>
         )
@@ -33,7 +30,6 @@ class Home extends Component {
     ) : (
       <div className="center">No posts to show</div>
     );
-
     return (
       <div>
         <div className="container">
@@ -42,6 +38,7 @@ class Home extends Component {
         </div>
       </div>
     )
+  
   }
 }
 

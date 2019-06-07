@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+
 
 class Post extends Component {
-  state = {
-    post: null
-  }
-  componentDidMount(){
-    let id = this.props.match.params.post_id;
-    axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
-      .then(res => {
-        this.setState({
-          post: res.data
-        });
-        //console.log(res.data);
-      });
-  }
-  render() {
 
-    const post = this.state.post ? (
+  render() {
+    let id=this.props.match.params.post_id
+   let id1=parseInt(id)
+    var { products}=this.props.data
+    
+    var length
+    if(products){
+      length=products.length
+    }
+   
+    const post = length ? (
+      products.map((post,index)=>{
+        console.log(id,index)
+        if(id1==index){
+          console.log(post)
+        return(
       <div className="post">
-        <h4 className="center">{this.state.post.title}</h4>
-        <p>{this.state.post.body}</p>
+        <h4 className="center">{post.productName}</h4>
+        <p className="Container" dangerouslySetInnerHTML={ {__html: post.longDescription}}></p>
       </div>
+      )}
+    return null
+    })
     ) : (
       <div className="center">Loading post...</div>
     );
@@ -31,6 +35,7 @@ class Post extends Component {
         {post}
       </div>
     )
+ 
   }
 }
 
