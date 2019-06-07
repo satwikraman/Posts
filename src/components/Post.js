@@ -16,7 +16,7 @@ class Post extends Component {
     const post = length ? (
       products.map((post,index)=>{
         console.log(id,index)
-        if(id1==index){
+        if(id1===index){
           console.log(post)
         return(
       <div className="post">
