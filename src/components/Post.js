@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 
-
 class Post extends Component {
-
   render() {
     let id=this.props.match.params.post_id
    let id1=parseInt(id)
     var { products}=this.props.data
-    
     var length
     if(products){
       length=products.length
     }
-   
     const post = length ? (
       products.map((post,index)=>{
         console.log(id,index)
@@ -29,13 +25,11 @@ class Post extends Component {
     ) : (
       <div className="center">Loading post...</div>
     );
-
     return (
       <div className="container">
         {post}
       </div>
     )
- 
   }
 }
 

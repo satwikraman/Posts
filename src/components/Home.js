@@ -6,7 +6,6 @@ class Home extends Component {
   state = {
     
   }
-
   render(){
      var { products}=this.props.data
     
