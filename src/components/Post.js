@@ -15,7 +15,7 @@ class Post extends Component {
         if(id1===index){
           console.log(post)
         return(
-      <div className="post">
+      <div className="post" key={post.productId}>
         <h4 className="center">{post.productName}</h4>
         <p className="Container" dangerouslySetInnerHTML={ {__html: post.longDescription}}></p>
       </div>
