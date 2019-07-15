@@ -9,9 +9,9 @@ const Rainbow = (WrappedComponent) => {
   return (props) => (
     <div className={className}>
       <WrappedComponent {...props} />
-    </div>  
+    </div>
   )
-  
+
 }
 
 export default Rainbow
